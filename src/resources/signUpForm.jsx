@@ -50,16 +50,6 @@ export default function SignUp() {
 
   console.log("User", userEmail, userPassword);
 
-  useEffect(() => {
-    const userAsString = localStorage.getItem("user");
-
-    if (userAsString) {
-      const user = JSON.parse(userAsString);
-
-      setAuthenticatedUser(user);
-    }
-  }, []);
-
   const handleSubmit = (e) => {
     e.preventDefault();
 
@@ -74,15 +64,15 @@ export default function SignUp() {
     fetch("http://localhost:3030/users/registration", fetchOptions)
       .then((res) => res.json())
       .catch(console.log)
-      .then((data) => {
-        console.log("DATA", data);
+      .then((user) => {
+        console.log("user", user);
         // const user = data.user
 
-        // if (user) {
-        //   setAuthenticatedUser(user)
+        if (user) {
+          setAuthenticatedUser(user);
 
-        //   localStorage.setItem("user", JSON.stringify(user))
-        // }
+          localStorage.setItem("user", JSON.stringify(user));
+        }
       });
   };
 
