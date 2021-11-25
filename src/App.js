@@ -1,12 +1,12 @@
 import { useEffect, useState } from "react";
-import logo from "./logo.svg";
 import "./App.css";
-import SignUp from "./resources/signUpForm";
 import "@fontsource/roboto/300.css";
 import "@fontsource/roboto/400.css";
 import "@fontsource/roboto/500.css";
 import "@fontsource/roboto/700.css";
 import { dividerClasses } from "@mui/material";
+import SignUp from "./resources/Sign-up";
+import Login from "./resources/Login";
 
 function App() {
   const [authenticatedUser, setAuthenticatedUser] = useState(null);
@@ -24,7 +24,8 @@ function App() {
   return (
     <>
       <SignUp setAuthenticatedUser={setAuthenticatedUser} />
-      {authenticatedUser && <div>Hello, humans</div>}
+      <Login setAuthenticatedUser={setAuthenticatedUser} />
+      {authenticatedUser && <div>Secrets</div>}
     </>
   );
 }

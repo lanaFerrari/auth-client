@@ -34,9 +34,7 @@ function Copyright(props) {
 
 const theme = createTheme();
 
-export default function SignUp() {
-  const [authenticatedUser, setAuthenticatedUser] = useState(null);
-
+export default function SignUp({ setAuthenticatedUser }) {
   const [userEmail, setUserEmail] = useState("");
   const [userPassword, setUserPassword] = useState("");
 
@@ -47,8 +45,6 @@ export default function SignUp() {
   const handlePasswordInput = (e) => {
     setUserPassword(e.target.value);
   };
-
-  console.log("User", userEmail, userPassword);
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -65,9 +61,6 @@ export default function SignUp() {
       .then((res) => res.json())
       .catch(console.log)
       .then((user) => {
-        console.log("user", user);
-        // const user = data.user
-
         if (user) {
           setAuthenticatedUser(user);
 
