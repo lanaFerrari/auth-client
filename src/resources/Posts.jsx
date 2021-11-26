@@ -18,7 +18,7 @@ export default function PostsList({ userEmail }) {
 
     fetch("http://localhost:3030/posts", fetchOptions)
       .then((response) => response.json())
-      .then((data) => setPosts(data));
+      .then((data) => setPosts(data.posts));
   }, [userEmail]);
 
   return (
