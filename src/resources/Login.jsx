@@ -60,15 +60,23 @@ export default function Login({}) {
     };
 
     fetch("http://localhost:3030/login", fetchOptions)
-      .then((res) => res.json())
-      .catch(console.log)
-      .then((user) => {
-        if (user) {
-          setAuthenticatedUser(user);
-
-          localStorage.setItem("user", JSON.stringify(user));
+      .then((res) => {
+        if (!res.ok) {
+          throw Error(`[${res.status} ERROR]`);
         }
-      });
+        return res.json;
+      })
+      .then((data) => {
+        console.log("DATA", data.token);
+        const token = data.token;
+
+        if (token) {
+          setAuthenticatedUser(token);
+
+          localStorage.setItem("Token", token);
+        }
+      })
+      .catch((error) => console.error({ error }));
   };
 
   return (
