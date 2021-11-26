@@ -64,7 +64,7 @@ export default function Login({}) {
         if (!res.ok) {
           throw Error(`[${res.status} ERROR]`);
         }
-        return res.json;
+        return res.json();
       })
       .then((data) => {
         console.log("DATA", data.token);
