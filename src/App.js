@@ -10,6 +10,8 @@ import PostsList from "./resources/Posts";
 
 function App() {
   const [authenticatedUser, setAuthenticatedUser] = useState(null);
+  const [userEmail, setUserEmail] = useState("");
+  const [userPassword, setUserPassword] = useState("");
 
   useEffect(() => {
     const userAsString = localStorage.getItem("user");
@@ -23,11 +25,21 @@ function App() {
 
   return (
     <>
-      <SignUp setAuthenticatedUser={setAuthenticatedUser} />
-      <Login setAuthenticatedUser={setAuthenticatedUser} />
+      <SignUp
+        setAuthenticatedUser={setAuthenticatedUser}
+        setUserEmail={setUserEmail}
+        setUserPassword={setUserPassword}
+        userEmail={userEmail}
+        userPassword={userPassword}
+      />
+      <Login
+        setAuthenticatedUser={setAuthenticatedUser}
+        setUserEmail={setUserEmail}
+        setUserPassword={setUserPassword}
+      />
       {authenticatedUser && <div>Secrets</div>}
 
-      <PostsList />
+      <PostsList userEmail={userEmail} />
     </>
   );
 }

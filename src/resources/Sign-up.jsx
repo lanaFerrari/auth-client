@@ -34,10 +34,13 @@ function Copyright(props) {
 
 const theme = createTheme();
 
-export default function SignUp({ setAuthenticatedUser }) {
-  const [userEmail, setUserEmail] = useState("");
-  const [userPassword, setUserPassword] = useState("");
-
+export default function SignUp({
+  setAuthenticatedUser,
+  setUserEmail,
+  setUserPassword,
+  userEmail,
+  userPassword,
+}) {
   const handleEmailInput = (e) => {
     setUserEmail(e.target.value);
   };
